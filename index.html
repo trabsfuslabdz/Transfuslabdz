@@ -76,7 +76,7 @@
 <body>
 
 <h1>Transfu'Lab 🩸</h1>
-<p>Entrez le poids en grammes et choisissez le type de sang ou de produit :</p>
+<p>Entrez le poids en gramme :</p>
 
 <select id="typeProduit">
     <option value="SangTotal">Sang Total</option>
@@ -85,7 +85,7 @@
     <option value="PFC">PFC</option>
 </select>
 <br>
-<input type="number" id="grammes" placeholder="Poids en grammes">
+<input type="number" id="gramme" placeholder="Poids en gramme">
 <br>
 <button onclick="calculer()">Calculer</button>
 
@@ -94,20 +94,20 @@
 <script>
 function calculer() {
     let typeProduit = document.getElementById('typeProduit').value;
-    let grammes = parseFloat(document.getElementById('grammes').value);
+    let gramme = parseFloat(document.getElementById('gramme').value);
     let resultDiv = document.getElementById('result');
     
-    if(isNaN(grammes)) { 
+    if(isNaN(gramme)) { 
         resultDiv.innerText = "Veuillez entrer un poids valide !";
         resultDiv.style.opacity = 1;
         return;
     }
 
     let result = 0;
-    if(typeProduit === "SangTotal") result = ((grammes - 29)/1.08) - 60;
-    else if(typeProduit === "CGR") result = (grammes - 29)/1.07;
-    else if(typeProduit === "CSP") result = (grammes - 29)/1.03;
-    else if(typeProduit === "PFC") result = (grammes - 29)/1.03;
+    if(typeProduit === "SangTotal") result = ((gramme - 29)/1.08) - 60;
+    else if(typeProduit === "CGR") result = (gramme - 29)/1.07;
+    else if(typeProduit === "CSP") result = (gramme - 29)/1.03;
+    else if(typeProduit === "PFC") result = (gramme - 29)/1.03;
 
     resultDiv.innerText = "Résultat: " + result.toFixed(2) + " mL";
     resultDiv.style.opacity = 0;
